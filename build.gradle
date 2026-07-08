@@ -30,6 +30,26 @@ dependencies {
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
 }
 
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java // Publica el JAR compilado por el plugin de Java
+		}
+	}
+	repositories {
+		maven {
+			name = "GitHubPackages"
+			// Reemplaza 'llocado' y 'lib-domain-foods' si cambian, pero según tu captura es así:
+			url = uri("https://maven.pkg.github.com/llocado/lib-domain-foods")
+			credentials {
+				// Estas variables las leerá automáticamente el pipeline de GitHub o tu máquina
+				username = System.getenv("GITHUB_ACTOR")
+				password = System.getenv("GITHUB_TOKEN")
+			}
+		}
+	}
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
