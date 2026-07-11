@@ -2,7 +2,8 @@ name: Publish Core Domain Package
 
 on:
   release:
-    types: [published] # Se ejecuta solo cuando publicas un Release formal en GitHub
+    types: [published]
+  workflow_dispatch:
 
 jobs:
   publish:
