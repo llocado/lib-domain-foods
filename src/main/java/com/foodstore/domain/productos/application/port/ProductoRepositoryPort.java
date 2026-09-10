@@ -1,5 +1,7 @@
 package com.foodstore.domain.productos.application.port;
 
+import com.foodstore.domain.productos.domain.model.CriterioPaginacion;
+import com.foodstore.domain.productos.domain.model.Pagina;
 import com.foodstore.domain.productos.domain.model.Producto;
 import com.foodstore.domain.productos.domain.model.ProductoId;
 import com.foodstore.domain.productos.domain.model.Sku;
@@ -16,6 +18,8 @@ public interface ProductoRepositoryPort {
     Optional<Producto> buscarPorSku(Sku sku);
 
     List<Producto> listarTodos();
+
+    Pagina<Producto> listarPaginado(CriterioPaginacion criterio);
 
     boolean existePorSku(Sku sku);
 

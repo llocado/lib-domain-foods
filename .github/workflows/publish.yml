@@ -1,8 +1,8 @@
 name: Publish Core Domain Package
 
 on:
-  release:
-    types: [published]
+  push:
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -24,6 +24,9 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
+
+      - name: Run tests
+        run: ./gradlew test
 
       - name: Publish package to GitHub Packages
         run: ./gradlew publish
