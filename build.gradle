@@ -1,6 +1,7 @@
 plugins {
 	id 'java'
 	id 'maven-publish'
+	id 'info.solidsoft.pitest' version '1.19.0'
 }
 
 group = 'com.foodstore'
@@ -53,4 +54,19 @@ publishing {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+// --- Tests de mutacion (PIT) ---
+// Introduce cambios pequenos en el codigo (mutantes: invertir un if, cambiar un > por >=, ...) y
+// comprueba que algun test falle. Un mutante que sobrevive = comportamiento que los tests no vigilan.
+// Alcance: dominio de productos, solo con los tests unitarios (rapido, sin Docker).
+// Uso: ./gradlew pitest   Informe: build/reports/pitest/index.html
+pitest {
+	pitestVersion = '1.30.0'
+	junit5PluginVersion = '1.2.3'
+	targetClasses = ['com.foodstore.domain.*']
+	targetTests = ['com.foodstore.domain.*']
+	threads = 4
+	outputFormats = ['HTML', 'XML']
+	timestampedReports = false
 }

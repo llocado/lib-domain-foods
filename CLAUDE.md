@@ -26,6 +26,7 @@ compartidas con el resto del proyecto en `../CLAUDE.md`.
 ```bash
 ./gradlew build
 ./gradlew test
+./gradlew pitest   # tests de mutacion del dominio -> build/reports/pitest/index.html
 ```
 
 ## Estado del repo
