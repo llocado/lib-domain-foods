@@ -21,6 +21,12 @@ public interface ProductoRepositoryPort {
 
     Pagina<Producto> listarPaginado(CriterioPaginacion criterio);
 
+    /**
+     * Productos cuyo nombre contiene el texto, sin distinguir mayusculas ("lech" encuentra "Leche Entera"), ordenados
+     * por nombre. El texto se toma literalmente: "%" o "_" no actuan como comodines.
+     */
+    Pagina<Producto> buscarPorNombre(String texto, CriterioPaginacion criterio);
+
     boolean existePorSku(Sku sku);
 
     void eliminar(ProductoId id);

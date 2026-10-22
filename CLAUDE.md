@@ -8,7 +8,7 @@ compartidas con el resto del proyecto en `../CLAUDE.md`.
 ## Qué es y qué no es
 
 - Contiene el modelo de dominio de productos: `Producto`, `Sku`, puertos de
-  paginación (`Pagina`, `CriterioPaginacion`, `listarPaginado`), etc.
+  paginación (`Pagina`, `CriterioPaginacion`, `listarPaginado`, `buscarPorNombre`), etc.
 - **Ningún servicio nuevo** (`carrito-service`, `pedidos-service`, etc.)
   debería agregarla como dependencia — cada servicio es dueño de su propio
   modelo de dominio. Es exclusiva de `productos-service`.
